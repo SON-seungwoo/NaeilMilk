@@ -1,4 +1,6 @@
-# NaeilMilk
+# 🥛 NaeilMilk ?text-align=center
+<img src="https://user-images.githubusercontent.com/112487056/226943364-e0e04810-adf6-452b-aa71-baa84f95aaec.png">
+<br>
 
 ## 개요
 ### 개발 동기
