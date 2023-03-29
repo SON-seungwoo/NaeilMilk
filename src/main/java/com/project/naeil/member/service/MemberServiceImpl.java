@@ -13,6 +13,7 @@ import com.project.naeil.member.vo.MemberVO;
 @Service("memberService")
 @Transactional(propagation=Propagation.REQUIRED)
 public class MemberServiceImpl implements MemberService {
+	
 	//의존성
 	@Autowired
 	private MemberDAO memberDAO;
@@ -41,6 +42,7 @@ public class MemberServiceImpl implements MemberService {
 		return memberDAO.checkEmail(kakaoNewEmail);
 	}
 	
+	//카카오 이메일 회원 비교
 	@Override
 	public MemberVO email(String kakaoNewEmail) throws Exception {
 		return memberDAO.email(kakaoNewEmail);

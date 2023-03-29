@@ -46,6 +46,7 @@ public class MemberDAOImpl  implements MemberDAO{
 		return result;
 	}
 	
+	//카카오 이메일 회원 비교
 	@Override
 	public MemberVO email(String kakaoNewEmail) throws DataAccessException {
 		MemberVO member = (MemberVO) sqlSession.selectOne("mapper.member.email", kakaoNewEmail);

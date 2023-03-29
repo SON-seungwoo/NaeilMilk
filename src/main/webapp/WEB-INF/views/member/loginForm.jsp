@@ -10,6 +10,8 @@
 <c:if test='${not empty message }'>
 
 <script>
+
+	//로그인 결과 바로 적용
 	window.onload=function()
 	{
 	  result();
@@ -52,6 +54,7 @@
 <script>
 	window.Kakao.init("da4bef609228b4a716f5e04f6cd08cbc");
 	
+	//카카오 로그인 오픈 api
 	function kakaoLogin() {
 		window.Kakao.Auth.login({
 			scope:'account_email',

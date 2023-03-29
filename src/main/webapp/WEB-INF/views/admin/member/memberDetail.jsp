@@ -114,6 +114,7 @@ function init(){
     }
 </script>
 <script>
+//수정
 function fn_modify_member_info(member_id,mod_type){
 	var value;
 	// alert(member_id);
@@ -252,7 +253,7 @@ function fn_modify_member_info(member_id,mod_type){
 		}); //end ajax
 }
 
-//멤버 삭제
+//멤버 삭제(Ajax 활용해 쉽게 구현)
 function fn_delete_member(member_id){
   	$.ajax({
 		type : "post",
@@ -273,6 +274,7 @@ function fn_delete_member(member_id){
 	}); //end ajax	
 }
 
+// 뒤로가기
 function backToList(obj) {
 	obj.action = "${contextPath}/admin/member/adminMemberMain.do";
 	obj.submit();

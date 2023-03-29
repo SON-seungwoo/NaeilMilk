@@ -25,11 +25,14 @@ import com.project.naeil.member.vo.MemberVO;
 @Controller("memberController")
 @RequestMapping(value="/member")
 public class MemberControllerImpl extends BaseController implements MemberController{
+	
+	//의존성 주입
 	@Autowired
 	private MemberService memberService;
 	@Autowired
 	private MemberVO memberVO;
 	
+	// 로그인 사용 시 컨트롤러
 	@Override
 	@RequestMapping(value = "/login.do", method = {RequestMethod.GET, RequestMethod.POST})
 							  				// id와 비밀번호를 Map에 저장합니다.

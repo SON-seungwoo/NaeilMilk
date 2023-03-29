@@ -11,6 +11,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <script>
+
+	//검색
 function search_member(search_period){	
 	temp=calcPeriod(search_period);
 	var date=temp.split(",");
@@ -38,6 +40,7 @@ function search_member(search_period){
     formObj.submit();
 }
 
+	//회원 상세 
 function fn_member_detail(order_id){
 	//alert(order_id);
 	var frm_delivery_list=document.frm_delivery_list;

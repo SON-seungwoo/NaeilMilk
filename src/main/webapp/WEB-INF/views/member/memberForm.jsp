@@ -8,12 +8,15 @@
 <meta charset="utf-8">
 <script>
 
+	//아이디 중복체크
+	
 	function fn_overlapped() {
 		var _id = $("#_member_id").val();
 		if (_id == '') {
 			alert("ID를 입력하세요");
 			return;
 		}
+		//Ajax 동기
 		$.ajax({
 			type : "post",
 			async : false,
@@ -42,6 +45,7 @@
 		}); //end ajax	 
 	}
 </script>
+
 </head>
 <body>
 	<div class="signup_div">
@@ -201,6 +205,8 @@
 	</div>
 	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
+
+// 카카오 주소검색 오픈 api
 function execDaumPostcode() {
     new daum.Postcode({
       oncomplete: function(data) {
@@ -236,7 +242,8 @@ function execDaumPostcode() {
       }
     }).open();
   }
-  
+ 
+// 이메일 화면 바로 적용
 function updateEmail2() {
 	  var email3 = document.getElementById("email3").value;
 	  if (email3 == "non") {

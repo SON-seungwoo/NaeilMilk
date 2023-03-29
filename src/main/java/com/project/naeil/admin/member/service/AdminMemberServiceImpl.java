@@ -14,17 +14,22 @@ import com.project.naeil.member.vo.MemberVO;
 @Service("adminMemberService")
 @Transactional(propagation=Propagation.REQUIRED)
 public class AdminMemberServiceImpl implements AdminMemberService {
+	
+	//의존성 주입
 	@Autowired
 	private AdminMemberDAO adminMemberDAO;
 	
+	//회원 목록 조회
 	public ArrayList<MemberVO> listMember(HashMap condMap) throws Exception{
 		return adminMemberDAO.listMember(condMap);
 	}
 
+	//회원 상세 조회
 	public MemberVO memberDetail(String member_id) throws Exception{
 		 return adminMemberDAO.memberDetail(member_id);
 	}
 	
+	//회원 수정
 	public void  modifyMemberInfo(HashMap memberMap) throws Exception{
 		 String member_id=(String)memberMap.get("member_id");
 		 adminMemberDAO.modifyMemberInfo(memberMap);

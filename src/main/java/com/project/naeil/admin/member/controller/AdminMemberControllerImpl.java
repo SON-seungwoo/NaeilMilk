@@ -22,9 +22,12 @@ import com.project.naeil.member.vo.MemberVO;
 @Controller("adminMemberController")
 @RequestMapping(value="/admin/member")
 public class AdminMemberControllerImpl extends BaseController  implements AdminMemberController{
+	
+	//의존성 주입
 	@Autowired
 	private AdminMemberService adminMemberService;
 	
+	//회원 메인
 	@RequestMapping(value="/adminMemberMain.do" ,method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView adminGoodsMain(@RequestParam Map<String, String> dateMap,
 			                           HttpServletRequest request, HttpServletResponse response)  throws Exception{
@@ -71,6 +74,8 @@ public class AdminMemberControllerImpl extends BaseController  implements AdminM
 		return mav;
 		
 	}
+	
+	//회원 상세 조회
 	@RequestMapping(value="/memberDetail.do" ,method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView memberDetail(HttpServletRequest request, HttpServletResponse response)  throws Exception{
 		String viewName=(String)request.getAttribute("viewName");
@@ -81,6 +86,7 @@ public class AdminMemberControllerImpl extends BaseController  implements AdminM
 		return mav;
 	}
 	
+	//회원 수정
 	@RequestMapping(value="/modifyMemberInfo.do" ,method={RequestMethod.POST,RequestMethod.GET})
 	public void modifyMemberInfo(HttpServletRequest request, HttpServletResponse response)  throws Exception{
 		HashMap<String,String> memberMap=new HashMap<String,String>();
@@ -128,7 +134,7 @@ public class AdminMemberControllerImpl extends BaseController  implements AdminM
 		
 	}
 	
-	//멤버 삭제
+	//회원 삭제 (간단한 방법)
 	@Override
 	@RequestMapping(value="/deleteMember.do" , method= {RequestMethod.POST})
 	public void deleteMember(@RequestParam("member_id") String member_id, HttpServletRequest request, HttpServletResponse response) throws Exception {

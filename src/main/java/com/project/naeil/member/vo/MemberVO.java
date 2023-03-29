@@ -4,31 +4,33 @@ import org.springframework.stereotype.Component;
 
 @Component("memberVO")
 public class MemberVO {
-	private String member_id; 
-	private String member_pw; 
-	private String member_name;
-	private String member_gender;
-	private String member_birth_y;
-	private String member_birth_m;
-	private String member_birth_d;
-	private String member_birth_gn;
-	private String tel1;
-	private String tel2;
-	private String tel3;
-	private String hp1;
-	private String hp2;
-	private String hp3;
-	private String smssts_yn;
-	private String email1;
-	private String email2;
-	private String emailsts_yn;
-	private String zipcode;
-	private String roadAddress;
-	private String jibunAddress;
-	private String namujiAddress;
-	private String joinDate;
-	private String del_yn;
+	private String member_id; //아이디
+	private String member_pw; //비밀번호
+	private String member_name; //이름
+	private String member_gender; //성별
+	private String member_birth_y; //생년
+	private String member_birth_m; //월
+	private String member_birth_d; //일
+	private String member_birth_gn; // 음양력
+	private String tel1; //전화번호 1
+	private String tel2; //전화번호 2
+	private String tel3; //전화번호 3
+	private String hp1; //휴대폰 번호 1
+	private String hp2; //휴대폰 번호 2
+	private String hp3; //휴대폰 번호 3
+	private String smssts_yn; //문자 수신 여부
+	private String email1; //이메일 1
+	private String email2; //이메일 2
+	private String emailsts_yn; //이메일 수신 여부
+	private String zipcode; //우편번호
+	private String roadAddress; //도로명 주소
+	private String jibunAddress; //지번주소
+	private String namujiAddress; //나머지 주소
+	private String joinDate; //가입일
+	private String del_yn; //삭제 여부
 	
+	
+	//Getter, Setter
 	public String getMember_id() {
 		return member_id;
 	}
