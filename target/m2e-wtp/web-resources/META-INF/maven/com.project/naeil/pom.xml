@@ -268,7 +268,7 @@
 		</dependency>
 	
 	</dependencies>
-
+	<!-- 메이븐을 사용해 JAVA 프로젝트를 빌드하는데 사용하는 구문 -->
 	<build>
 		<plugins>
 			<plugin>

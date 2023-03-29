@@ -4,14 +4,23 @@
 
 <configuration>
   <typeAliases>
+  	<!-- 상품 -->
     <typeAlias type="com.project.naeil.goods.vo.GoodsVO" alias="goodsVO" />
+    <!-- 상품 이미지 -->
     <typeAlias type="com.project.naeil.goods.vo.ImageFileVO" alias="imageFileVO" />
+    <!-- 회원 -->
     <typeAlias type="com.project.naeil.member.vo.MemberVO" alias="memberVO" />
+    <!-- 장바구니 -->
     <typeAlias type="com.project.naeil.cart.vo.CartVO" alias="cartVO" />
+    <!-- 주문 -->
     <typeAlias type="com.project.naeil.order.vo.OrderVO" alias="orderVO" />
+    <!-- 마이 페이지 -->
     <typeAlias type="com.project.naeil.mypage.vo.MyPageVO" alias="mypageVO" />
+    <!-- 후기 게시판 -->
     <typeAlias type="com.project.naeil.board.review.vo.BoardReviewVO" alias="BoardReviewVO" />
+    <!-- QNA 게시판 -->
     <typeAlias type="com.project.naeil.board.qna.vo.BoardQnaVO" alias="boardQnaVO" />
+    <!-- 공지사항 게시판 -->
     <typeAlias type="com.project.naeil.admin.notice.vo.NoticeVO" alias="noticeVO" />
   </typeAliases>
 </configuration>
