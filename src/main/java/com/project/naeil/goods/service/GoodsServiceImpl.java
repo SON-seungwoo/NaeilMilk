@@ -16,9 +16,12 @@ import com.project.naeil.goods.vo.ImageFileVO;
 @Service("goodsService")
 @Transactional(propagation=Propagation.REQUIRED)
 public class GoodsServiceImpl implements GoodsService{
+	
+	//의존성 주입
 	@Autowired
 	private GoodsDAO goodsDAO;
 	
+	//상품 조회
 	public Map<String,List<GoodsVO>> listGoods() throws Exception {
 		Map<String,List<GoodsVO>> goodsMap=new HashMap<String,List<GoodsVO>>();
 		
@@ -36,6 +39,7 @@ public class GoodsServiceImpl implements GoodsService{
 		//
 	}
 	
+	//상품 상세조회
 	public Map goodsDetail(String goods_id) throws Exception {
 		Map goodsMap=new HashMap();
 		
@@ -48,16 +52,19 @@ public class GoodsServiceImpl implements GoodsService{
 		return goodsMap;
 	}
 	
+	//키워드 검색
 	public List<String> keywordSearch(String keyword) throws Exception {
 		List<String> list=goodsDAO.selectKeywordSearch(keyword);
 		return list;
 	}
 	
+	//검색 단어
 	public List<GoodsVO> searchGoods(String searchWord) throws Exception{
 		List goodsList=goodsDAO.selectGoodsBySearchWord(searchWord);
 		return goodsList;
 	}
 
+	//평균 별점
 	@Override
 	public Map<String,List<GoodsVO>> selectGoodsAvgStar() throws Exception {
 		Map<String,List<GoodsVO>> AvgStarMap= new HashMap<String,List<GoodsVO>>();
@@ -70,8 +77,6 @@ public class GoodsServiceImpl implements GoodsService{
 		
 		AvgStar=goodsDAO.selectGoodsAvgStar("on_sale");
 		AvgStarMap.put("on_sale", AvgStar);
-		
-		
 		
 		return AvgStarMap;
 	}

@@ -18,15 +18,10 @@
 		<result property="goods_status" column="goods_status" />
 		<result property="goods_sales_price" column="goods_sales_price" />
 		<result property="goods_published_date" column="goods_published_date" />
-		<result property="goods_total_page" column="goods_total_page" />
-		<result property="goods_isbn" column="goods_isbn" />
-		<result property="goods_delivery_price" column="goods_delivery_price" />
 		<result property="goods_delivery_date" column="goods_delivery_date" />
 
 		<result property="goods_fileName" column="fileName" />
 		<result property="goods_sort" column="goods_sort" />
-		<result property="goods_writer_intro" column="goods_writer_intro" />
-		<result property="goods_contents_order" column="goods_contents_order" />
 		<result property="goods_intro" column="goods_intro" />
 	</resultMap>
 
@@ -62,7 +57,7 @@
   ]]>
 </select>
 	
-	<!-- goods_status의 조건 값으로 해당 상품 리뷰 평균 별의 갯수를 조회하는 쿼라 -->
+	<!-- goods_status의 조건 값으로 해당 상품 리뷰 평균 별의 갯수를 조회하는 쿼리 -->
 	<select id="selectAvgStar" parameterType="String" resultMap="goodsResult">
         <![CDATA[
         SELECT t.goods_id, t.goods_status, ROUND(AVG(N.star)) AS avg_star

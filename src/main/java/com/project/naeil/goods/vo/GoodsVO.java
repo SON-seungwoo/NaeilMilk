@@ -3,36 +3,31 @@ package com.project.naeil.goods.vo;
 import java.sql.Date;
 
 public class GoodsVO {
-	private int goods_id;
-	private String goods_title;
-	private String goods_writer;
-	private int goods_price;
-	private String goods_publisher;
-	private String goods_sort;
-	private int goods_sales_price;
-	private int goods_point;
-	private int goods_avg_star;
-	private int goods_review_count;
-	private Date goods_published_date;
-	private int goods_total_page;
-	private String goods_isbn;
-	private String goods_delivery_price;
-	private Date goods_delivery_date;
-	private String goods_fileName;
-	private String goods_status;
-	private String goods_writer_intro;
-	private String goods_contents_order;
-	private String goods_intro;
-	private String goods_publisher_comment;
-	private String goods_recommendation;
-	private Date goods_credate;
+	private int goods_id; //상품번호
+	private String goods_sort; // 대분류
+	private String goods_title; //이름
+	private String goods_publisher; //상품 제조사
+	private int goods_price; // 가격
+	private int goods_sales_price; //세일 가격
+	private int goods_point; //포인트 
+	private Date goods_published_date; //입고 일자
+	private Date goods_delivery_date; //배송 날짜
+	private String goods_status; //소분류
+	private String goods_intro; //상품소개
+	private String goods_fileName; //이미지파일이름
+	private Date goods_credate; //상품 입고일
 	
-	private int image_id;
-	private String image_fileName;
+	private int goods_avg_star; // 리뷰 별점
+	private int goods_review_count; //평균 리뷰
+	
+	private int image_id; //이미지 아이디
+	private String image_fileName; //이미지 이름
 
 	public GoodsVO() {
 	}
 
+	
+	//Getter, Setter
 	public int getGoods_id() {
 		return goods_id;
 	}
@@ -47,14 +42,6 @@ public class GoodsVO {
 
 	public void setGoods_title(String goods_title) {
 		this.goods_title = goods_title;
-	}
-
-	public String getGoods_writer() {
-		return goods_writer;
-	}
-
-	public void setGoods_writer(String goods_writer) {
-		this.goods_writer = goods_writer;
 	}
 
 	public int getGoods_price() {
@@ -97,30 +84,6 @@ public class GoodsVO {
 		this.goods_point = goods_point;
 	}
 
-	public int getGoods_total_page() {
-		return goods_total_page;
-	}
-
-	public void setGoods_total_page(int goods_total_page) {
-		this.goods_total_page = goods_total_page;
-	}
-
-	public String getGoods_isbn() {
-		return goods_isbn;
-	}
-
-	public void setGoods_isbn(String goods_isbn) {
-		this.goods_isbn = goods_isbn;
-	}
-
-	public String getGoods_delivery_price() {
-		return goods_delivery_price;
-	}
-
-	public void setGoods_delivery_price(String goods_delivery_price) {
-		this.goods_delivery_price = goods_delivery_price;
-	}
-
 	public Date getGoods_published_date() {
 		return goods_published_date;
 	}
@@ -153,44 +116,12 @@ public class GoodsVO {
 		this.goods_status = goods_status;
 	}
 
-	public String getGoods_writer_intro() {
-		return goods_writer_intro;
-	}
-
-	public void setGoods_writer_intro(String goods_writer_intro) {
-		this.goods_writer_intro = goods_writer_intro;
-	}
-
-	public String getGoods_contents_order() {
-		return goods_contents_order;
-	}
-
-	public void setGoods_contents_order(String goods_contents_order) {
-		this.goods_contents_order = goods_contents_order;
-	}
-
 	public String getGoods_intro() {
 		return goods_intro;
 	}
 
 	public void setGoods_intro(String goods_intro) {
 		this.goods_intro = goods_intro;
-	}
-
-	public String getGoods_publisher_comment() {
-		return goods_publisher_comment;
-	}
-
-	public void setGoods_publisher_comment(String goods_publisher_comment) {
-		this.goods_publisher_comment = goods_publisher_comment;
-	}
-
-	public String getGoods_recommendation() {
-		return goods_recommendation;
-	}
-
-	public void setGoods_recommendation(String goods_recommendation) {
-		this.goods_recommendation = goods_recommendation;
 	}
 
 	public Date getGoods_credate() {

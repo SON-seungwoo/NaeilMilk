@@ -27,6 +27,8 @@ import net.sf.json.JSONObject;
 @Controller("goodsController")
 @RequestMapping(value="/goods")
 public class GoodsControllerImpl extends BaseController implements GoodsController {
+	
+	//의존성 
 	@Autowired
 	private GoodsService goodsService;
 	
@@ -34,9 +36,11 @@ public class GoodsControllerImpl extends BaseController implements GoodsControll
 	@Autowired
 	private BoardReviewService boardReviewService;
 	
+	// QNA글 의존성
 	@Autowired
 	private BoardQnaService boardQnaService;
 	
+	//상품 상세조회
 	@RequestMapping(value="/goodsDetail.do", method={RequestMethod.GET, RequestMethod.POST})
 	public ModelAndView goodsDetail(@RequestParam(value="goods_id", required=false) String goods_id, HttpServletRequest request, HttpSession session) throws Exception {
 	    String viewName = (String)request.getAttribute("viewName");
@@ -57,7 +61,7 @@ public class GoodsControllerImpl extends BaseController implements GoodsControll
 	    if (goodsMap != null) {
 	        // 조회한 상품 정보를 빠른 메뉴에 표시하기 위해 전달합니다.
 	        GoodsVO goodsVO = (GoodsVO) goodsMap.get("goodsVO");
-	        addGoodsInQuick(goods_id, goodsVO, session);
+//	        addGoodsInQuick(goods_id, goodsVO, session);
 
 	        //리뷰글을 갖고오는 메서드
 	        session.setAttribute("goodsInfo", goodsVO);
@@ -72,7 +76,9 @@ public class GoodsControllerImpl extends BaseController implements GoodsControll
 
 	    return mav;
 	}
-																		  // 브라우저로 전송하는 JSON 데이터의 한글 인코딩을 지정합니다.
+						
+	
+	//키워드 검색																		// 브라우저로 전송하는 JSON 데이터의 한글 인코딩을 지정합니다.
 	@RequestMapping(value="/keywordSearch.do",method = RequestMethod.GET, produces = "application/text; charset=utf8")
 	// @ResponseBody => JSON 데이터를 브라우저로 출력합니다. // @RequestParam("keyword") String keyword => 검색할 키워드를 가져옵니다.
 	public @ResponseBody String  keywordSearch(@RequestParam("keyword") String keyword,
@@ -100,6 +106,8 @@ public class GoodsControllerImpl extends BaseController implements GoodsControll
 	    return jsonInfo ;
 	}
 	
+	
+	//상품 단어
 	@RequestMapping(value="/searchGoods.do" ,method = RequestMethod.GET)
 	public ModelAndView searchGoods(@RequestParam("searchWord") String searchWord,
 			                       HttpServletRequest request, HttpServletResponse response) throws Exception{
@@ -114,42 +122,43 @@ public class GoodsControllerImpl extends BaseController implements GoodsControll
 		
 	}
 	
-	private void addGoodsInQuick(String goods_id,GoodsVO goodsVO,HttpSession session){
-		boolean already_existed=false;
-		List<GoodsVO> quickGoodsList; //최근 본 상품 저장 ArrayList
-		
-		// 세션에 저장된 최근 본 상품 목록을 가져옵니다.
-		quickGoodsList=(ArrayList<GoodsVO>)session.getAttribute("quickGoodsList");
-		
-		// 최근 본 상품이 있는 경우
-		if(quickGoodsList!=null){
-			// 상품 목록이 네 개 이하인 경우
-			if(quickGoodsList.size() < 4){ //미리본 상품 리스트에 상품개수가 세개 이하인 경우
-				// 상품 목록을 가져와 이미 존재하는 상품인지 비교합니다. 이미 존재할 경우 already_existed를 true로 설정합니다.
-				for(int i=0; i<quickGoodsList.size();i++){
-					GoodsVO _goodsBean=(GoodsVO)quickGoodsList.get(i);
-					if(goods_id.equals(_goodsBean.getGoods_id())){
-						already_existed=true;
-						break;
-					}
-				}
-				
-				// already_existed가 false이면 상품 정보를 목록에 저장합니다.
-				if(already_existed==false){
-					quickGoodsList.add(goodsVO);
-				}
-				
-			}
-			
-		}else{
-			quickGoodsList =new ArrayList<GoodsVO>();
-			quickGoodsList.add(goodsVO);
-			
-		}
-		// 최근 본 상품 목록을 세션에 저장합니다.
-		session.setAttribute("quickGoodsList",quickGoodsList);
-		
-		// 최근 본 상품 목록에 저장된 상품 개수를 세션에 저장합니다.
-		session.setAttribute("quickGoodsListNum", quickGoodsList.size());
-	}
+	//최근 본 상품조회
+//	private void addGoodsInQuick(String goods_id,GoodsVO goodsVO,HttpSession session){
+//		boolean already_existed=false;
+//		List<GoodsVO> quickGoodsList; //최근 본 상품 저장 ArrayList
+//		
+//		// 세션에 저장된 최근 본 상품 목록을 가져옵니다.
+//		quickGoodsList=(ArrayList<GoodsVO>)session.getAttribute("quickGoodsList");
+//		
+//		// 최근 본 상품이 있는 경우
+//		if(quickGoodsList!=null){
+//			// 상품 목록이 네 개 이하인 경우
+//			if(quickGoodsList.size() < 4){ //미리본 상품 리스트에 상품개수가 세개 이하인 경우
+//				// 상품 목록을 가져와 이미 존재하는 상품인지 비교합니다. 이미 존재할 경우 already_existed를 true로 설정합니다.
+//				for(int i=0; i<quickGoodsList.size();i++){
+//					GoodsVO _goodsBean=(GoodsVO)quickGoodsList.get(i);
+//					if(goods_id.equals(_goodsBean.getGoods_id())){
+//						already_existed=true;
+//						break;
+//					}
+//				}
+//				
+//				// already_existed가 false이면 상품 정보를 목록에 저장합니다.
+//				if(already_existed==false){
+//					quickGoodsList.add(goodsVO);
+//				}
+//				
+//			}
+//			
+//		}else{
+//			quickGoodsList =new ArrayList<GoodsVO>();
+//			quickGoodsList.add(goodsVO);
+//			
+//		}
+//		// 최근 본 상품 목록을 세션에 저장합니다.
+//		session.setAttribute("quickGoodsList",quickGoodsList);
+//		
+//		// 최근 본 상품 목록에 저장된 상품 개수를 세션에 저장합니다.
+//		session.setAttribute("quickGoodsListNum", quickGoodsList.size());
+//	}
 }

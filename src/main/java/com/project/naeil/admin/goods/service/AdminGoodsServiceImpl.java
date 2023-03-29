@@ -18,9 +18,13 @@ import com.project.naeil.order.vo.OrderVO;
 @Service("adminGoodsService")
 @Transactional(propagation=Propagation.REQUIRED)
 public class AdminGoodsServiceImpl implements AdminGoodsService {
+	
+	//의존성 추가
 	@Autowired
 	private AdminGoodsDAO adminGoodsDAO;
 	
+	
+	//상품 추가
 	@Override
 	public int addNewGoods(Map newGoodsMap) throws Exception{
 					   // 상품 정보를 테이블에 추가합니다.
@@ -38,10 +42,14 @@ public class AdminGoodsServiceImpl implements AdminGoodsService {
 		return goods_id;
 	}
 	
+	
+	//새상품 목록
 	@Override
 	public List<GoodsVO> listNewGoods(Map condMap) throws Exception{
 		return adminGoodsDAO.selectNewGoodsList(condMap);
 	}
+	
+	//상품 상세
 	@Override
 	public Map goodsDetail(int goods_id) throws Exception {
 		Map goodsMap = new HashMap();
@@ -51,36 +59,48 @@ public class AdminGoodsServiceImpl implements AdminGoodsService {
 		goodsMap.put("imageFileList", imageFileList);
 		return goodsMap;
 	}
+	
+	//상품 이지미
 	@Override
 	public List goodsImageFile(int goods_id) throws Exception{
 		List imageList =adminGoodsDAO.selectGoodsImageFileList(goods_id);
 		return imageList;
 	}
 	
+	
+	//상품 정보 수정
 	@Override
 	public void modifyGoodsInfo(Map goodsMap) throws Exception{
 		adminGoodsDAO.updateGoodsInfo(goodsMap);
 		
 	}	
+	
+	//상품 이미지 수정
 	@Override
 	public void modifyGoodsImage(List<ImageFileVO> imageFileList) throws Exception{
 		adminGoodsDAO.updateGoodsImage(imageFileList); 
 	}
 	
+	
+	//주문 목록
 	@Override
 	public List<OrderVO> listOrderGoods(Map condMap) throws Exception{
 		return adminGoodsDAO.selectOrderGoodsList(condMap);
 	}
+	
+	//주문 수정
 	@Override
 	public void modifyOrderGoods(Map orderMap) throws Exception{
 		adminGoodsDAO.updateOrderGoods(orderMap);
 	}
 	
+	//상품 이미지 삭제
 	@Override
 	public void removeGoodsImage(int image_id) throws Exception{
 		adminGoodsDAO.deleteGoodsImage(image_id);
 	}
 	
+	//상품 이미지 추가
 	@Override
 	public void addNewGoodsImage(List imageFileList) throws Exception{
 		adminGoodsDAO.insertGoodsImageFile(imageFileList);
@@ -91,5 +111,6 @@ public class AdminGoodsServiceImpl implements AdminGoodsService {
 	public void removeGoods(int goods_id) throws Exception{
 		adminGoodsDAO.deleteGoodsImage(goods_id);
 		adminGoodsDAO.deleteGoods(goods_id);
+		//상품과 이미지 동시에 삭제
 	}
 }

@@ -31,10 +31,15 @@ import com.project.naeil.member.vo.MemberVO;
 @Controller("adminGoodsController")
 @RequestMapping(value="/admin/goods")
 public class AdminGoodsControllerImpl extends BaseController  implements AdminGoodsController{
+	
+	//이미지 파일 경로 설정
 	private static final String CURR_IMAGE_REPO_PATH = "C:\\shopping\\file_repo";
+	
+	//의존성 추가
 	@Autowired
 	private AdminGoodsService adminGoodsService;
 	
+	//관리자 상품 메인
 	@RequestMapping(value="/adminGoodsMain.do" ,method={RequestMethod.POST,RequestMethod.GET})
 	public ModelAndView adminGoodsMain(@RequestParam Map<String, String> dateMap,
 			                           HttpServletRequest request, HttpServletResponse response)  throws Exception {
@@ -85,7 +90,7 @@ public class AdminGoodsControllerImpl extends BaseController  implements AdminGo
 	}
 	
 
-	
+	//상품 추가
 	@RequestMapping(value="/addNewGoods.do" ,method={RequestMethod.POST})
 	public ResponseEntity addNewGoods(MultipartHttpServletRequest multipartRequest, HttpServletResponse response) throws Exception {
 		multipartRequest.setCharacterEncoding("utf-8");
@@ -174,7 +179,7 @@ public class AdminGoodsControllerImpl extends BaseController  implements AdminGo
 		return mav;
 	}
 	
-	
+	//상품 정보 수정
 	@RequestMapping(value="/modifyGoodsInfo.do" ,method={RequestMethod.POST})
 										  // 상품 정보 수정창에서 Ajax로 수정할 상품 번호, 상품 속성, 수정 값을 전달받습니다.
 	public ResponseEntity modifyGoodsInfo(@RequestParam("goods_id") String goods_id,
@@ -200,7 +205,8 @@ public class AdminGoodsControllerImpl extends BaseController  implements AdminGo
 		return resEntity;
 	}
 	
-
+	
+	//상품 이미지 수정
 	@RequestMapping(value="/modifyGoodsImageInfo.do" ,method={RequestMethod.POST})
 	public void modifyGoodsImageInfo(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)  throws Exception {
 		System.out.println("modifyGoodsImageInfo");
@@ -266,7 +272,7 @@ public class AdminGoodsControllerImpl extends BaseController  implements AdminGo
 		
 	}
 	
-
+	//상품 이미지 추가
 	@Override
 	@RequestMapping(value="/addNewGoodsImage.do" ,method={RequestMethod.POST})
 	public void addNewGoodsImage(MultipartHttpServletRequest multipartRequest, HttpServletResponse response)
@@ -318,25 +324,26 @@ public class AdminGoodsControllerImpl extends BaseController  implements AdminGo
 			e.printStackTrace();
 		}
 	}
-
-	@Override
-	@RequestMapping(value="/removeGoodsImage.do" ,method={RequestMethod.POST})
-	public void  removeGoodsImage(@RequestParam("goods_id") int goods_id,
-			                      @RequestParam("image_id") int image_id,
-			                      @RequestParam("imageFileName") String imageFileName,
-			                      HttpServletRequest request, HttpServletResponse response)  throws Exception {
-		
-		adminGoodsService.removeGoodsImage(image_id);
-		try{
-			File srcFile = new File(CURR_IMAGE_REPO_PATH+"\\"+goods_id+"\\"+imageFileName);
-			srcFile.delete();
-		}catch(Exception e) {
-			e.printStackTrace();
-		}
-	}
+	
+//	//상품 이미지 삭제
+//	@Override
+//	@RequestMapping(value="/removeGoodsImage.do" ,method={RequestMethod.POST})
+//	public void  removeGoodsImage(@RequestParam("goods_id") int goods_id,
+//			                      @RequestParam("image_id") int image_id,
+//			                      @RequestParam("imageFileName") String imageFileName,
+//			                      HttpServletRequest request, HttpServletResponse response)  throws Exception {
+//		
+//		adminGoodsService.removeGoodsImage(image_id);
+//		try{
+//			File srcFile = new File(CURR_IMAGE_REPO_PATH+"\\"+goods_id+"\\"+imageFileName);
+//			srcFile.delete();
+//		}catch(Exception e) {
+//			e.printStackTrace();
+//		}
+//	}
 	
 	
-	//삭제
+	//상품삭제
 	@Override
 	@RequestMapping(value="/removeGoods.do", method={RequestMethod.POST})
 	public void removeGoodsImage(@RequestParam("goods_id") int goods_id,
