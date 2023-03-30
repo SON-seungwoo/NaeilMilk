@@ -16,9 +16,12 @@ import com.project.naeil.goods.vo.GoodsVO;
 @Service("cartService")
 @Transactional(propagation=Propagation.REQUIRED)
 public class CartServiceImpl implements CartService {
+	
+	//의존성 추가
 	@Autowired
 	private CartDAO cartDAO;
 	
+	//장바구니 목록 
 	public Map<String ,List> myCartList(CartVO cartVO) throws Exception{
 		Map<String,List> cartMap=new HashMap<String,List>();
 		
@@ -40,22 +43,26 @@ public class CartServiceImpl implements CartService {
 		return cartMap;
 	}
 	
-	// 테이블에 추가하기 전에 동일한 상품 번호의 개수를 조회합니다.
+	//테이블에 추가하기 전에 동일한 상품 번호의 개수를 조회합니다.
 	public boolean findCartGoods(CartVO cartVO) throws Exception{
 		
 		return cartDAO.selectCountInCart(cartVO);
 	}	
 	
-	// 장바구니에 추가합니다.
+	//장바구니에 추가합니다.
 	public void addGoodsInCart(CartVO cartVO) throws Exception{
 		cartDAO.insertGoodsInCart(cartVO);
 	}
 	
+	
+	//수량 변경
 	public boolean modifyCartQty(CartVO cartVO) throws Exception{
 		boolean result=true;
 		cartDAO.updateCartGoodsQty(cartVO);
 		return result;
 	}
+	
+	//상품 삭제
 	public void removeCartGoods(int cart_id) throws Exception{
 		cartDAO.deleteCartGoods(cart_id);
 	}

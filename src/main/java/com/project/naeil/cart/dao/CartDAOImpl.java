@@ -14,14 +14,18 @@ import com.project.naeil.goods.vo.GoodsVO;
 
 @Repository("cartDAO")
 public class CartDAOImpl  implements  CartDAO{
+	
+	//의존성 추가
 	@Autowired
 	private SqlSession sqlSession;
 	
+	//장바구니 목록
 	public List<CartVO> selectCartList(CartVO cartVO) throws DataAccessException {
 		List<CartVO> cartList =(List)sqlSession.selectList("mapper.cart.selectCartList",cartVO);
 		return cartList;
 	}
-
+	
+	//상품 목록
 	public List<GoodsVO> selectGoodsList(List<CartVO> cartList, String member_id) throws DataAccessException {
 		
 		List<GoodsVO> myGoodsList;
@@ -48,14 +52,17 @@ public class CartDAOImpl  implements  CartDAO{
 		sqlSession.insert("mapper.cart.insertGoodsInCart",cartVO);
 	}
 	
+	//상품 수량을 변경합니다
 	public void updateCartGoodsQty(CartVO cartVO) throws DataAccessException{
 		sqlSession.insert("mapper.cart.updateCartGoodsQty",cartVO);
 	}
 	
+	//항목을 삭제합니다
 	public void deleteCartGoods(int cart_id) throws DataAccessException{
 		sqlSession.delete("mapper.cart.deleteCartGoods",cart_id);
 	}
-
+	
+	//중복방지
 	private int selectMaxCartId() throws DataAccessException{
 		int cart_id = sqlSession.selectOne("mapper.cart.selectMaxCartId");
 		return cart_id;

@@ -4,16 +4,17 @@ import org.springframework.stereotype.Component;
 
 @Component("cartVO")
 public class CartVO {
-	private int cart_id;
-	private int goods_id;
-	private String member_id;
-	private int cart_goods_qty;
-	private String creDate;
+	private int cart_id; //장바구니 번호
+	private int goods_id; //상품 번호
+	private String member_id; //회원아이디
+	private int cart_goods_qty; //상품 수량
+	private String creDate; //생성날짜
 
 	public int getCart_id() {
 		return cart_id;
 	}
-
+	
+	//Getter,Setter
 	public void setCart_id(int cart_id) {
 		this.cart_id = cart_id;
 	}

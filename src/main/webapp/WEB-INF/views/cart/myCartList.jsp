@@ -15,6 +15,7 @@
 <head>
 <script type="text/javascript">
 
+
 function calcGoodsPrice(bookPrice,obj){
 	var totalPrice,final_total_price,totalNum;
 	var goods_qty=document.getElementById("select_goods_qty");
@@ -47,6 +48,7 @@ function calcGoodsPrice(bookPrice,obj){
 	p_final_totalPrice.innerHTML=final_total_price;
 }
 
+//상품 수량 계산(Ajax)
 function modify_cart_qty(goods_id,bookPrice,index){
    var length=document.frm_order_all_cart.cart_goods_qty.length;
    var _cart_goods_qty=0;
@@ -87,6 +89,7 @@ function modify_cart_qty(goods_id,bookPrice,index){
 	}); //end ajax	
 }
 
+//장바구니 상품항목 삭제
 function delete_cart_goods(cart_id){
 	var cart_id=Number(cart_id);
 	var formObj=document.createElement("form");
@@ -101,6 +104,7 @@ function delete_cart_goods(cart_id){
     formObj.submit();
 }
 
+//상품 전체 주문
 function fn_order_each_goods(goods_id,goods_title,goods_sales_price,fileName){
 	var total_price,final_total_price,_goods_qty;
 	var cart_goods_qty=document.getElementById("cart_goods_qty");

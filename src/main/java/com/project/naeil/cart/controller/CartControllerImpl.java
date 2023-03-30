@@ -23,6 +23,8 @@ import com.project.naeil.member.vo.MemberVO;
 @Controller("cartController")
 @RequestMapping(value="/cart")
 public class CartControllerImpl extends BaseController implements CartController{
+	
+	//의존성 추가
 	@Autowired
 	private CartService cartService;
 	@Autowired
@@ -30,6 +32,7 @@ public class CartControllerImpl extends BaseController implements CartController
 	@Autowired
 	private MemberVO memberVO;
 	
+	//장바구니 항목
 	@RequestMapping(value="/myCartList.do" ,method = RequestMethod.GET)
 	public ModelAndView myCartMain(HttpServletRequest request, HttpServletResponse response)  throws Exception {
 		String viewName=(String)request.getAttribute("viewName");
@@ -47,6 +50,8 @@ public class CartControllerImpl extends BaseController implements CartController
 		//mav.addObject("cartMap", cartMap);
 		return mav;
 	}
+	
+	//장바구니 상품 추가
 	@RequestMapping(value="/addGoodsInCart.do", method = RequestMethod.POST, produces = "application/text; charset=utf8")
 												// 전송된 상품 번호를 받습니다.
 	public @ResponseBody String addGoodsInCart(@RequestParam("goods_id") int goods_id, 
@@ -74,6 +79,8 @@ public class CartControllerImpl extends BaseController implements CartController
 		}
 	}
 	
+	
+	//상품 수량 변경
 	@RequestMapping(value="/modifyCartQty.do" ,method = RequestMethod.POST)
 	public @ResponseBody String modifyCartQty(@RequestParam("goods_id") int goods_id,
 			                                  @RequestParam("cart_goods_qty") int cart_goods_qty,
@@ -94,6 +101,7 @@ public class CartControllerImpl extends BaseController implements CartController
 		
 	}
 	
+	//장바구니 항목 삭제
 	@RequestMapping(value="/removeCartGoods.do" ,method = RequestMethod.POST)
 	public ModelAndView removeCartGoods(@RequestParam("cart_id") int cart_id,
 			                            HttpServletRequest request, HttpServletResponse response)  throws Exception{
